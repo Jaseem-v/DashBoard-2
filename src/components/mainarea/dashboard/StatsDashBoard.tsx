@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { createStyles, Group, Paper, SimpleGrid, Text } from '@mantine/core';
 import {
     UserPlus,
@@ -36,21 +36,27 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-const icons = {
-    user: UserPlus,
-    discount: Discount2,
-    receipt: Receipt2,
-    coin: Coin,
-};
+// const icons = {
+//     user: UserPlus,
+//     discount: Discount2,
+//     receipt: Receipt2,
+//     coin: Coin,
+// };
+
+console.log(typeof UserPlus);
+
+
 
 interface StatsGridProps {
-    data: { title: string; icon: keyof typeof icons; value: string; diff: number }[];
+    data: { title: string; icon: string; value: string; diff: number }[];
 }
 
 export default function StatsDashBoard({ data }: StatsGridProps) {
     const { classes } = useStyles();
+
     const stats = data.map((stat) => {
-        const Icon = icons[stat.icon];
+
+        // const Icon = icons[stat.icon];
         const DiffIcon = stat.diff > 0 ? ArrowUpRight : ArrowDownRight;
 
         return (
@@ -59,7 +65,7 @@ export default function StatsDashBoard({ data }: StatsGridProps) {
                     <Text size="xs" color="dimmed" className={classes.title}>
                         {stat.title}
                     </Text>
-                    <Icon className={classes.icon} size={22} />
+                    {/* <Icon className={classes.icon} size={22} /> */}
                 </Group>
 
                 <Group align="flex-end" spacing="xs" mt={25}>

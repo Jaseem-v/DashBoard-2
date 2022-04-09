@@ -1,16 +1,11 @@
 import React from 'react';
-import { SimpleGrid, Skeleton, Container, Group, useMantineTheme } from '@mantine/core';
+import { SimpleGrid, Container, } from '@mantine/core';
 import UsersInfo from './userinfo/UserInfo';
 import { Routes, Route, Navigate } from "react-router-dom"
 import DashBoard from './dashboard/DashBoard';
 
-const getChild = (height: number) => <Skeleton height={height} radius="md" animate={false} />;
-const BASE_HEIGHT = 360;
-const getSubHeight = (children: number, spacing: number) =>
-    BASE_HEIGHT / children - spacing * ((children - 1) / children);
 
 export default function Mainarea() {
-    const theme = useMantineTheme();
 
     const data = [
         {
@@ -93,7 +88,6 @@ export default function Mainarea() {
 
             <Routes>
                 <Route
-                    exact
                     path="/"
                     element={<DashBoard />}
                 />
